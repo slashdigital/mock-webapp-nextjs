@@ -127,3 +127,8 @@
     filter: invert(1);
   }
 }
+
+.description a {
+  
+  color: #0070f3;
+}
