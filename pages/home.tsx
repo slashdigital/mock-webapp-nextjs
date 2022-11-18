@@ -28,7 +28,7 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          You are <Link href="https://nextjs.org">Logged in!</Link>
+         <span className={styles.blue}>You are Logged in to Dashboard</span>
         </h1>
 
         <p className={styles.description}>

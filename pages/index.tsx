@@ -11,7 +11,7 @@ import styles from "../styles/Home.module.css";
 export default function Home() {
   const router = useRouter();
   const authContext = React.useContext(AuthContext);
-
+  const timeoutBeforeRedirect = 2000;
   
   // if (router.query && router.query.token) {
   //   const authData: AuthData = { token: router.query.token.toString()};
@@ -24,13 +24,15 @@ export default function Home() {
       console.log( { token: router.query.token.toString()})
       const authData: AuthData = { token: router.query.token.toString()};
       authContext.setAuthState!(authData);
-      router.push("/home");
+      setTimeout(() => {
+        router.push("/home");
+
+      }, timeoutBeforeRedirect);
     } else {
 
       const initialAuthData: AuthData = { token: localStorage.getItem("token") ?? ""};
       authContext.setAuthState!(initialAuthData);
     }
-    console.log( authContext.isUserAuthenticated!(),'dfd');
     // authContext.isUserAuthenticated!()
     // ? router.push("/home")
     // : router.push("/");
@@ -50,12 +52,11 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <Link href="https://nextjs.org">Platform A!</Link>
+          Home Page
         </h1>
 
         <p className={styles.description}>
-          Now logging you in{' '}
-          <code className={styles.code}>checking our auth code...</code>
+          <code className={styles.code}>Checking our auth code...</code>
         </p>
       </main>
 
